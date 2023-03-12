@@ -20,6 +20,7 @@ void Human::Update() {
 }
 
 void Human::UpdateHead() {
+
     switch (direction) {
         case Direction::kUp:
             head_y -= speed;

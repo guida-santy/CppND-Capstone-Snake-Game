@@ -25,6 +25,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 
     // Input, Update, Render - the main game loop.
     controller.HandleInput(running, snake);
+    controller.HandleFoodPosition(running, _human);
     Update();
     renderer.Render(snake, food, _human);
 
@@ -71,6 +72,7 @@ void Game::Update() {
   if (!snake.alive) return;
 
   snake.Update();
+  _human.Update();
 
   int new_x = static_cast<int>(snake.head_x);
   int new_y = static_cast<int>(snake.head_y);

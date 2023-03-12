@@ -9,6 +9,7 @@ void Controller::ChangeDirection(Snake &snake, Snake::Direction input,
   return;
 }
 
+
 void Controller::HandleInput(bool &running, Snake &snake) const {
   SDL_Event e;
   while (SDL_PollEvent(&e)) {
@@ -38,4 +39,23 @@ void Controller::HandleInput(bool &running, Snake &snake) const {
       }
     }
   }
+}
+
+void Controller::HandleFoodPosition(bool &running, Human &human) const {
+  SDL_Event e;
+    if (e.type == SDL_QUIT) {
+        running = false;
+        return;
+    }
+
+    if(round(human.head_x) != human.GetFoodLocation().x){
+        human.direction = Human::Direction::kLeft;
+    }else {
+        if(round(human.head_y) != human.GetFoodLocation().y) {
+            human.direction = Human::Direction::kUp;
+        }
+    }
+
+
+
 }
