@@ -59,7 +59,7 @@ void Game::PlaceFood() {
         y = random_h(engine);
         // Check that the location is not occupied by a snake item before placing
         // food.
-        if (!snake.SnakeCell(x, y)) {
+        if (!snake.SnakeCell(x, y) && !_human.HumanCell(x, y)) {
             food.x = x;
             food.y = y;
             _human.SetFoodLocation(food);
@@ -75,18 +75,26 @@ void Game::Update() {
     _human.Update();
 
     // Check if snake touched human
-    for (auto const &s_item: snake.body) {
-        for (auto const &h_item: _human.body) {
-            if (s_item.x == h_item.x && s_item.y == h_item.y) {
+    for (auto const &h_item: _human.body) {
+        if(snake.head_x == h_item.x && snake.head_y == h_item.y){
+            snake.alive = false;
+           break;
+        }
+        for (auto const &s_item: snake.body){
+            if((_human.head_x == s_item.x && _human.head_y == s_item.y) || (h_item.x == s_item.x && h_item.y == s_item.y)  ){
                 snake.alive = false;
-                return;
+                break;
             }
         }
     }
 
+    if (!snake.alive) {
+        std::cout << "Killed by human" << std::endl;
+        return;
+    }
+
     int new_x = static_cast<int>(snake.head_x);
     int new_y = static_cast<int>(snake.head_y);
-
     // Check if there's food over here
     if (food.x == new_x && food.y == new_y) {
         score++;
@@ -105,7 +113,7 @@ void Game::Update() {
         PlaceFood();
         // Grow snake and increase speed.
         _human.GrowBody();
-        _human.speed += 0.014;
+        _human.speed += 0.015;
     }
 
 
