@@ -3,9 +3,7 @@
 
 #include <vector>
 #include "SDL.h"
-#include "game.h"
 
-class Game;
 
 class Human {
 public:
@@ -13,12 +11,12 @@ public:
         kUp, kDown, kLeft, kRight
     };
 
-    explicit Human(int grid_width, int grid_height, Game &game) :
+    explicit Human(int grid_width, int grid_height, SDL_Point food_loc) :
             grid_width(grid_width),
             grid_height(grid_height),
-            head_x(0),
-            head_y(grid_height),
-            _game{&game} {}
+            head_x(grid_width / 2),
+            head_y(grid_height / 2),
+            _food_loc{food_loc} {}
 
     void Update();
 
@@ -26,7 +24,7 @@ public:
 
     bool HumanCell(int x, int y);
 
-    Direction direction = Direction::kUp;
+    Direction direction = Direction::kLeft;
 
     float speed{0.1f};
     int size{1};
@@ -34,6 +32,14 @@ public:
     float head_x;
     float head_y;
     std::vector<SDL_Point> body;
+
+    void SetFoodLocation(SDL_Point loc){
+        _food_loc = loc;
+    };
+
+    SDL_Point GetFoodLocation(){
+        return _food_loc;
+    };
 
 private:
     void UpdateHead();
@@ -43,7 +49,7 @@ private:
     bool growing{false};
     int grid_width;
     int grid_height;
-    Game *_game;
+    SDL_Point _food_loc;
 };
 
 
