@@ -8,8 +8,10 @@ class Controller {
   void HandleInput(bool &running, Snake &snake) const;
   void HandleFoodPosition(bool  &running, Human &human) const;
  private:
-  void ChangeDirection(Snake &snake, Snake::Direction input,
-                       Snake::Direction opposite) const;
+
+    template <typename T>
+  void ChangeDirection(T &animal, typename T::Direction input,
+                       typename T::Direction opposite) const;
 };
 
 #endif

@@ -41,6 +41,10 @@ public:
         return _food_loc;
     };
 
+    int GetGridHeight(){
+        return grid_height;
+    };
+
 private:
     void UpdateHead();
 
