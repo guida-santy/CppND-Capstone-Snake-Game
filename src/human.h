@@ -28,7 +28,6 @@ public:
 
     float speed{0.1f};
     int size{1};
-    bool alive{true};
     float head_x;
     float head_y;
     std::vector<SDL_Point> body;

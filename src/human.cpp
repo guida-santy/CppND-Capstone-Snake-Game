@@ -55,13 +55,6 @@ void Human::UpdateBody(SDL_Point &current_head_cell, SDL_Point &prev_head_cell) 
         growing = false;
         size++;
     }
-
-    // Check if the Human has died.
-    for (auto const &item : body) {
-        if (current_head_cell.x == item.x && current_head_cell.y == item.y) {
-            alive = false;
-        }
-    }
 }
 
 void Human::GrowBody() { growing = true; }
