@@ -53,7 +53,7 @@ This work is licensed under a
 The section above, "Basic Build Instructions" covers this part.
 
 ## Overview of your code structure
-This project consists of a snake game with an extra obstacle. The snake now has a competitor for the food. A class named "Human" was created by copying the Snake class and doing some changes. The human is a non-player character that eats the food just like the snake, this will make him grow and increase speed. Besides the competition for food, the snake can not touch the human or it will die and the game is over. The objective of the snake is to get the biggest score possible.
+This project consists of a snake game with an extra obstacle. The snake (green square) now has a competitor for the food. A class named "Human" was created by copying the Snake class and doing some changes. The human is a non-player character (pink square) that eats the food just like the snake, this will make him grow and increase speed. Besides the competition for food, the snake can not touch the human or it will die and the game is over. The objective of the snake is to get the biggest score possible.
 
 
 ## Explanation of how your submission satisfies the necessary rubric
