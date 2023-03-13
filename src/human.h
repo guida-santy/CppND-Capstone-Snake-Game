@@ -40,7 +40,7 @@ public:
         return _food_loc;
     };
 
-    int GetGridHeight(){
+    int GetGridHeight() const{
         return grid_height;
     };
 
